@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir Sederhana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Kasir Sederhana</h1>
+
+        <div class="produk">
+
+            <button onclick="tambahProduk('Indomie',3500)">
+                Indomie - Rp3.500
+            </button>
+
+            <button onclick="tambahProduk('Teh Botol',5000)">
+                Teh Botol - Rp5.000
+            </button>
+
+            <button onclick="tambahProduk('Roti',7000)">
+                Roti - Rp7.000
+            </button>
+
+        </div>
+
+        <h2>Keranjang Belanja</h2>
+
+        <ul id="keranjang"></ul>
+
+        <h3>Total: Rp <span id="total">0</span></h3>
+
+        <hr>
+
+        <input type="number" id="bayar" placeholder="Uang Pembeli">
+
+        <button onclick="hitungKembalian()">
+            Hitung Kembalian
+        </button>
+
+        <h3>Kembalian: Rp <span id="kembalian">0</span></h3>
+
+        <hr>
+
+        <button class="reset" onclick="resetKasir()">
+            Reset Kasir
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
