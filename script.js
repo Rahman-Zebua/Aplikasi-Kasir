@@ -1,38 +1,36 @@
-```javascript
 let total = 0;
 
 function buatProduk() {
 
-  const nama =
+  let nama =
     document.getElementById("namaProduk").value;
 
-  const harga =
-    parseInt(
-      document.getElementById("hargaProduk").value
-    );
+  let harga =
+    document.getElementById("hargaProduk").value;
 
-  if (!nama || !harga) {
+  if (nama == "" || harga == "") {
 
-    alert("Isi nama dan harga produk!");
+    alert("Isi nama dan harga!");
 
     return;
   }
 
-  const daftar =
-    document.getElementById("daftarProduk");
+  harga = parseInt(harga);
 
-  const tombol =
+  let tombol =
     document.createElement("button");
 
-  tombol.innerText =
-    `${nama} - Rp${harga.toLocaleString("id-ID")}`;
+  tombol.innerHTML =
+    nama + " - Rp" + harga;
 
   tombol.onclick = function () {
 
     tambahKeKeranjang(nama, harga);
   };
 
-  daftar.appendChild(tombol);
+  document
+    .getElementById("daftarProduk")
+    .appendChild(tombol);
 
   document.getElementById("namaProduk").value = "";
 
@@ -41,25 +39,21 @@ function buatProduk() {
 
 function tambahKeKeranjang(nama, harga) {
 
-  const keranjang =
-    document.getElementById("keranjang");
-
-  const item =
+  let li =
     document.createElement("li");
 
-  item.innerHTML = `
-    ${nama} - Rp${harga.toLocaleString("id-ID")}
+  li.innerHTML =
+    nama + " - Rp" + harga +
+    ' <button onclick="hapusItem(this,' + harga + ')">Hapus</button>';
 
-    <button onclick="hapusItem(this, ${harga})">
-      Hapus
-    </button>
-  `;
-
-  keranjang.appendChild(item);
+  document
+    .getElementById("keranjang")
+    .appendChild(li);
 
   total += harga;
 
-  updateTotal();
+  document.getElementById("total").innerHTML =
+    "Total: Rp" + total;
 }
 
 function hapusItem(button, harga) {
@@ -68,33 +62,21 @@ function hapusItem(button, harga) {
 
   total -= harga;
 
-  updateTotal();
-}
-
-function updateTotal() {
-
-  document.getElementById("total").innerText =
-    `Total: Rp${total.toLocaleString("id-ID")}`;
+  document.getElementById("total").innerHTML =
+    "Total: Rp" + total;
 }
 
 function hitungKembalian() {
 
-  const bayar =
-    parseInt(
-      document.getElementById("bayar").value
-    );
+  let bayar =
+    document.getElementById("bayar").value;
 
-  if (!bayar) {
+  bayar = parseInt(bayar);
 
-    alert("Masukkan uang bayar!");
+  let kembali = bayar - total;
 
-    return;
-  }
-
-  const kembali = bayar - total;
-
-  document.getElementById("kembalian").innerText =
-    `Kembalian: Rp${kembali.toLocaleString("id-ID")}`;
+  document.getElementById("kembalian").innerHTML =
+    "Kembalian: Rp" + kembali;
 }
 
 function resetKasir() {
@@ -103,90 +85,17 @@ function resetKasir() {
 
   total = 0;
 
-  updateTotal();
+  document.getElementById("total").innerHTML =
+    "Total: Rp0";
 
-  document.getElementById("kembalian").innerText =
+  document.getElementById("kembalian").innerHTML =
     "Kembalian: Rp0";
 
   document.getElementById("bayar").value = "";
 }
 
-function toggleDarkMode() {
-
-  document.body.classList.toggle("dark");
-}
-
 function cetakStruk() {
 
-  let isi = "";
-
-  const items =
-    document.querySelectorAll("#keranjang li");
-
-  items.forEach(item => {
-
-    isi += `<p>${item.innerText}</p>`;
-  });
-
-  const struk = `
-    <html>
-
-    <head>
-
-      <title>Struk</title>
-
-      <style>
-
-        body{
-
-          font-family:Arial;
-
-          padding:20px;
-        }
-
-        h2{
-
-          text-align:center;
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      <h2>STRUK BELANJA</h2>
-
-      <hr>
-
-      ${isi}
-
-      <hr>
-
-      <h3>
-        ${document.getElementById("total").innerText}
-      </h3>
-
-      <h3>
-        ${document.getElementById("kembalian").innerText}
-      </h3>
-
-      <p>
-        Terima kasih 🙏
-      </p>
-
-    </body>
-
-    </html>
-  `;
-
-  const win =
-    window.open("", "", "width=400,height=600");
-
-  win.document.write(struk);
-
-  win.document.close();
-
-  win.print();
+  window.print();
 }
 ```
