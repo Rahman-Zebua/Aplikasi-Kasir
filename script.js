@@ -98,4 +98,3 @@ function cetakStruk() {
 
   window.print();
 }
-```
