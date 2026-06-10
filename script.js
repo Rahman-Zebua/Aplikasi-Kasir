@@ -1,3 +1,5 @@
+alert("script jalan");
+
 let total = 0;
 
 function buatProduk() {
@@ -7,7 +9,7 @@ function buatProduk() {
   const harga = document.getElementById("hargaProduk").value;
 
   if (nama === "" || harga === "") {
-    alert("Isi nama dan harga produk!");
+    alert("Isi nama dan harga!");
     return;
   }
 
@@ -28,7 +30,7 @@ function buatProduk() {
 
 function tambahKeKeranjang(nama, harga) {
 
-  total += harga;
+  total = total + harga;
 
   const item = document.createElement("p");
 
@@ -42,14 +44,8 @@ function tambahKeKeranjang(nama, harga) {
 
 function hitungKembalian() {
 
-  const bayar = parseInt(
-    document.getElementById("bayar").value
-  );
-
-  if (isNaN(bayar)) {
-    alert("Masukkan uang bayar!");
-    return;
-  }
+  const bayar =
+    parseInt(document.getElementById("bayar").value);
 
   const kembali = bayar - total;
 
@@ -73,21 +69,5 @@ function resetKasir() {
 }
 
 function cetakStruk() {
-
-  let isiStruk = `
-    <h2>STRUK BELANJA</h2>
-    <hr>
-    ${document.getElementById("keranjang").innerHTML}
-    <hr>
-    <h3>${document.getElementById("total").innerHTML}</h3>
-    <h3>${document.getElementById("kembalian").innerHTML}</h3>
-  `;
-
-  let halaman = window.open("", "", "width=400,height=600");
-
-  halaman.document.write(isiStruk);
-
-  halaman.document.close();
-
-  halaman.print();
+  window.print();
 }
