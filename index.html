@@ -1,53 +1,27 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0">
-
-  <title>Aplikasi Kasir Modern</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Kasir</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
 <div class="container">
 
-  <div class="header">
+  <h1>Aplikasi Kasir</h1>
 
-    <h1>🛒 Aplikasi Kasir</h1>
+  <input type="text" id="namaProduk" placeholder="Nama Produk">
 
-    <button onclick="toggleDarkMode()">
-      🌙 Dark Mode
-    </button>
-
-  </div>
-
-  <hr>
-
-  <h2>Tambah Produk</h2>
-
-  <input
-  type="text"
-  id="namaProduk"
-  placeholder="Nama Produk">
-
-  <input
-  type="number"
-  id="hargaProduk"
-  placeholder="Harga Produk">
+  <input type="number" id="hargaProduk" placeholder="Harga Produk">
 
   <button onclick="buatProduk()">
     Tambah Produk
   </button>
 
   <hr>
-
-  <h2>Daftar Produk</h2>
 
   <div id="daftarProduk"></div>
 
@@ -61,10 +35,9 @@
     Total: Rp0
   </h3>
 
-  <input
-  type="number"
+  <input type="number"
   id="bayar"
-  placeholder="Masukkan uang bayar">
+  placeholder="Uang Bayar">
 
   <button onclick="hitungKembalian()">
     Hitung Kembalian
@@ -74,17 +47,13 @@
     Kembalian: Rp0
   </h3>
 
-  <div class="aksi">
+  <button onclick="resetKasir()">
+    Reset
+  </button>
 
-    <button onclick="resetKasir()">
-      Reset
-    </button>
-
-    <button onclick="cetakStruk()">
-      Cetak Struk
-    </button>
-
-  </div>
+  <button onclick="cetakStruk()">
+    Cetak Struk
+  </button>
 
 </div>
 
